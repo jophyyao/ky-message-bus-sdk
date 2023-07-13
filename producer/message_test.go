@@ -9,6 +9,6 @@ import (
 
 func TestProducer(t *testing.T) {
 	auth.NewLogin("jophy", "asdf1234")
-	code, msg := NewProducer("ops_test", "yao", `{"name": "test_producer"}`)
+	code, msg := NewProducer("iaas", "resources", `{"name": "test_producer"}`)
 	fmt.Println(code, msg)
 }

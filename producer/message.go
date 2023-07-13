@@ -11,11 +11,11 @@ import (
 )
 
 type ProducerConfig struct {
-	Platform     string `json:"platform"`
-	Password     string `json:"password"`
-	ExchangeName string `json:"exchange_name"`
-	PublishKey   string `json:"publish_key"`
-	MessageJson  string `json:"message_json"`
+	Platform    string `json:"platform"`
+	Password    string `json:"password"`
+	System      string `json:"system"`
+	PublishKey  string `json:"publish_key"`
+	MessageJson string `json:"message_json"`
 }
 
 type ProducerApiResponse struct {
@@ -24,15 +24,15 @@ type ProducerApiResponse struct {
 	Data    interface{} `json:"data"`
 }
 
-func NewProducer(exchange_name, publish_key, message_json string) (int64, string) {
+func NewProducer(system_name, publish_key, message_json string) (int64, string) {
 	cf := config.InitConfig()
 	url := fmt.Sprintf("%[1]s:%[2]d/%[3]s/message/producer", cf.Host, cf.Port, cf.UrlPrefix)
 	httpArgs := ProducerConfig{
-		Platform:     auth.Platform,
-		Password:     auth.Password,
-		ExchangeName: exchange_name,
-		PublishKey:   publish_key,
-		MessageJson:  message_json,
+		Platform:    auth.Platform,
+		Password:    auth.Password,
+		System:      system_name,
+		PublishKey:  publish_key,
+		MessageJson: message_json,
 	}
 	jsonStr, _ := json.Marshal(httpArgs)
 	http_response, err := utils.HttpPostJson(
