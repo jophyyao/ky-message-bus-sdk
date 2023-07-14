@@ -1,10 +1,9 @@
-package producer
+package kymessage
 
 import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/jophyyao/ky-message-bus-sdk/auth"
 	"github.com/jophyyao/ky-message-bus-sdk/config"
 	"github.com/jophyyao/ky-message-bus-sdk/utils"
 	"github.com/siddontang/go/log"
@@ -28,8 +27,8 @@ func NewProducer(system_name, publish_key, message_json string) (int64, string) 
 	cf := config.InitConfig()
 	url := fmt.Sprintf("%[1]s:%[2]d/%[3]s/message/producer", cf.Host, cf.Port, cf.UrlPrefix)
 	httpArgs := ProducerConfig{
-		Platform:    auth.Platform,
-		Password:    auth.Password,
+		Platform:    Platform,
+		Password:    Password,
 		System:      system_name,
 		PublishKey:  publish_key,
 		MessageJson: message_json,

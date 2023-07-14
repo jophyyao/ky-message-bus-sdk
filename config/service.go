@@ -16,6 +16,9 @@ func InitConfig() *ServiceConfig {
 		cf.UrlPrefix = "api/v1"
 	} else {
 		// prod
+		cf.Host = "http://msg.kyhub.cn"
+		cf.Port = 80
+		cf.UrlPrefix = "api/v1"
 	}
 	return cf
 }
